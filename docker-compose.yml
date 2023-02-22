@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  node:
+    image: ma_super_app
+    container_name: node-app
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_HOST: db 
+      DATABASE_PORT: 3306
+      DATABASE_USERNAME: Ihsan
+      DATABASE_PASSWORD: Motdep@sse
+      DATABASE_NAME: IhsanDDB
+    depends_on:
+      - db
+
+
+  db:
+    image: mysql:5.7
+    container_name: mysqldb
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_USER: Ihsan
+      MYSQL_ROOT_PASSWORD: Motdep@sse
+      MYSQL_PASSWORD: Motdep@sse
+      MYSQL_DATABASE: IhsanDDB
